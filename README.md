@@ -32,3 +32,5 @@ style element ("In general, it is better to put your styles in external styleshe
 link element: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link
 
 CSS selectors: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors
+
+CSS color syntax: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#rgb_colors
