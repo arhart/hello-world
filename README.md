@@ -30,3 +30,5 @@ document.createTextNode ("can be used to escape HTML characters"): https://devel
 style element ("In general, it is better to put your styles in external stylesheets and apply them using <link> elements."): https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style
 
 link element: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link
+
+CSS selectors: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors
