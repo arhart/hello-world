@@ -21,10 +21,24 @@ const table = el.table( [ el.tr( [
   el.th( 'Name' ),
   el.th( 'Value' )
 ] ) ] );
-for(const i of ['isSecureContext', 'crypto']) {
+for(let i of [
+    'isSecureContext',
+    'crypto',
+    ['navigator', 'requestMIDIAccess'],
+    ['navigator', 'credentials', 'create'],
+    ['navigator', 'credentials', 'get'],
+    'PasswordCredential',
+    'FederatedCredential',
+    'PublicKeyCredential',
+  ]) {
+  i = Array.isArray( i ) ? i : [ i ];
+  let val = window;
+  for ( const component of i ) {
+    val = val?.[ component ];
+  }
   const tr = el.tr( [
-    el.td( i ),
-    el.td( String( window[ i ] ) )
+    el.td( i.join('.') ),
+    el.td( String( val ) )
   ] );
   table.appendChild( tr );
 }
