@@ -1,26 +1,25 @@
 'use strict';
+const el = function( tagName, ...rest ) {
+  const $el = document.createElement( tagName );
+  if ( typeof rest[0] === 'string' ) {
+    $el.appendChild( document.createTextNode( rest[0] ) );
+  }
+  return $el;
+};
+for( const tagName of [ 'p', 'table', 'td', 'th', 'tr' ] ) {
+  el[tagName] = (...rest) => el( tagName, ...rest );
+}
 const b = document.querySelector('body');
-const p = document.createElement('p');
-const t = document.createTextNode( 'dynamically added text inside a dynamically created paragraph' );
-p.appendChild( t );
-b.appendChild( p );
-const table = document.createElement('table');
-const headRow = document.createElement('tr');
-const $headerName = document.createElement('th');
-$headerName.appendChild( document.createTextNode( 'Name' ) );
-headRow.appendChild( $headerName );
-const $headerValue = document.createElement('th');
-$headerValue.appendChild( document.createTextNode( 'Value' ) );
-headRow.appendChild( $headerValue );
+b.appendChild( el.p( 'dynamically added text inside a dynamically created paragraph' ) );
+const table = el.table();
+const headRow = el.tr();
+headRow.appendChild( el.th( 'Name' ) );
+headRow.appendChild( el.th( 'Value' ) );
 table.appendChild( headRow );
 for(const i of ['isSecureContext', 'crypto']) {
-  const tr = document.createElement('tr');
-  const $name = document.createElement('td');
-  $name.appendChild( document.createTextNode( i ) );
-  const $value = document.createElement('td');
-  $value.appendChild( document.createTextNode( window[i] ) );
-  tr.appendChild( $name );
-  tr.appendChild( $value );
+  const tr = el.tr();
+  tr.appendChild( el.td( i ) );
+  tr.appendChild( el.td( String( window[i] ) ) );
   table.appendChild( tr );
 }
 b.appendChild( table );
