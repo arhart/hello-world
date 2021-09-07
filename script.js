@@ -1,6 +1,9 @@
 'use strict';
 const el = function( tagName, children ) {
   const $el = document.createElement( tagName );
+  if ( typeof children === 'string' ) {
+    children = [ children ];
+  }
   if ( $el instanceof Node && children && children.length ) {
     for ( const i of children ) {
       if ( typeof i === 'string' ) {
